@@ -181,7 +181,7 @@ distancia_total([_], 0).
 - Define la regla 
 
 distancia_total([P1, P2 | Resto], Total), que calcule la suma de distancias entre una lista puntos.
-
+[(1,2),(3,4),(,5,6)], Total :- dis(p1,p2,D), Total is D + dis(Resto
 ## Ejercio 4 - Recursion simple
 
 Serie de Fibonacci
