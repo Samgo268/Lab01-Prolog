@@ -1,0 +1,32 @@
+perro(firulais).
+perro(bruno).
+perro(max).
+gato(misu).
+gato(luna).
+gato(chanel).
+gato(orion).
+ave(piolin).
+
+dueno(ana, firulais).
+dueno(ana, misu).
+dueno(luis, luna).
+dueno(luis, orion).
+dueno(luis, firulais).
+dueno(maria, piolin).
+dueno(julia, chanel).
+dueno(pedro, bruno).
+
+dueño_gato(X) :- dueno(X, Y), gato(Y).
+dueño_perro(X) :- dueno(X, Y), perro(Y).
+dueño_ave(X):- dueno(X,Y), ave(Y).
+
+dueño_multiple(X):- dueno(X, Y), dueno(X, Z), gato(Y), gato(Z), Z\=Y.
+dueño_multiple(X):- dueno(X, Y), dueno(X, Z), perro(Y), perro(Z), Z\=Y.
+
+amante_animales(X) :- dueño_gato(X), dueño_perro(X).
+
+mascota_compartida(X,Y,Z) :- dueno(X,Y), dueno(Z,Y), X\=Z.
+
+tipo_mascota(X, perro) :- dueno(X,Y), perro(Y).
+tipo_mascota(X, gato) :- dueno(X,Y), gato(Y).
+tipo_mascota(X, ave) :- dueno(X,Y), ave(Y).
