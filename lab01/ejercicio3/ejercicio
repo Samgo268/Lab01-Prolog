@@ -1,0 +1,39 @@
+% Hechos
+nota(ana, 4.5).
+nota(luis, 2.8).
+nota(maria, 3.7).
+nota(juan, 5.0).
+nota(pedro, 2.3).
+
+reprueba(X) :- nota(X, Y), Y < 3.0.
+aprueba(X)  :- nota(X, Y), Y >= 3.0.
+
+rango(X, Min, Max) :-nota(X, Y), Y >= Min, Y =< Max.
+
+
+clasificacion(X, reprobado) :-
+    rango(X, 0.0, 2.9).
+
+clasificacion(X, aprobado) :-
+    rango(X, 3.0, 3.9).
+
+clasificacion(X, notable) :-
+    rango(X, 4.0, 4.5).
+
+clasificacion(X, excelente) :-
+    rango(X, 4.6, 5.0).
+
+
+eucli((X1, Y1), (X2, Y2), D) :-
+    DX is X2 - X1,
+    DY is Y2 - Y1,
+    D is sqrt(DX*DX + DY*DY).
+
+
+distancia_total([], 0).
+distancia_total([_], 0).
+
+distancia_total([P1, P2 | Resto], Total) :-
+    eucli(P1, P2, D),
+    distancia_total([P2 | Resto], TotalResto),
+    Total is D + TotalResto.
