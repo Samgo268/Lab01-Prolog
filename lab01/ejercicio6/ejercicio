@@ -1,0 +1,18 @@
+es_miembro(X, [X|_]).
+es_miembro(X, [_|Y]) :-
+    es_miembro_lista(X, Y).
+
+longitud([], 0).
+longitud([_|X], N) :- longitud(X, N1), N is N1 + 1.
+
+
+concatenada([], L2, L2).
+concatenada([X|Y], L2, [X|Z]) :- concatenada(Y, L2, Z).
+
+
+lista_inversa([], []).
+lista_inversa([X], [X]).
+lista_inversa([X|Y], R) :- lista_inversa(Y, R1), append(R1, [X], R).
+
+
+es_lista_palindromo(L) :- lista_inversa(L, L).
